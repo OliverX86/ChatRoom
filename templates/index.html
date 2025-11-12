@@ -35,6 +35,17 @@
                     socket.send($('#username').val() + ': ' + $('#message').val());
                     $('#message').val('');
                 });
+
+                const inputElement = document.getElementById('#message');
+
+                inputElement.addEventListener('keydown', (event) => {
+                    const pressedKey = event.key;
+
+                    if(pressedKey === 'Enter'){
+                        socket.send($('#username').val() + ': ' + $('#message').val());
+                        $('#message').val('');
+                    }
+                })
         })
     </script>
 
