@@ -50,9 +50,12 @@ document.addEventListener('keydown', function(event) {
     });
 </script>
 
-{% for msg in messages %}
+{% for msg in chat_messages %}
     <script type="text/javascript">
-            createMessage("{{msg.name}}", "{{msg.message}}")
+    createMessage(
+        {{ msg.name | tojson }},
+        {{ msg.message | tojson }}
+    );
     </script>
 {% endfor %}
 
