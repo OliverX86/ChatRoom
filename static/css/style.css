@@ -71,10 +71,12 @@ h2 {
     justify-content: space-between;
     padding-left: 10px;
     padding-right: 10px;
+    color: white;
 }
 
 .muted {
     font-size: 10px;
     color: white;
 }
+
 
