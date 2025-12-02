@@ -12,14 +12,14 @@
     
     <div class="join">
         <input id="text-box"type="text", placeholder="Room Code", name="code", value="{{code}}">
-        <button type="submit" name="join">Join Room</button>
+        <button type="submit" name="join" class="join-btn">Join Room</button>
     </div>
 
     <button type="submit", name="create", class="create-button">Create a Room</button>
 
     {% if error %}
     <ul>
-        <li>{{error}}</li>
+        <li id="error-msg">{{error}}</li>
     </ul>
     {% endif %}
 </form>

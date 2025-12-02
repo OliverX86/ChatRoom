@@ -21,7 +21,7 @@
         const content = `
         <div class="text">
             <span>
-                <strong>${name}</strong>: ${msg}
+                <strong id="sent-message">${name}</strong>: ${msg}
             </span>
             <span class="muted">
                 ${new Date().toLocaleString()}
@@ -29,7 +29,24 @@
         </div>
         `;
 
-        messages.innerHTML += content;
+        function msgTooBig(){
+            if (msg.length >= 300) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function msgEmpty(){
+            if (msg.trim() === "") {
+                return true;
+            }
+        }
+
+        if (!msgTooBig() && !msgEmpty()){
+            messages.innerHTML += content;
+        }
+        
     };
 
     socketio.on("message", (data) => {
@@ -49,6 +66,7 @@ document.addEventListener('keydown', function(event) {
         }
     });
 </script>
+
 
 {% for msg in chat_messages %}
     <script type="text/javascript">

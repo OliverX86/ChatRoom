@@ -25,6 +25,9 @@ body {
 
 .create-button {
     width: 100%;
+    background-color: white;
+    border-color: white;
+    border-radius: 5px;
 }
 
 .message-box {
@@ -51,6 +54,17 @@ body {
     display: flex;
 }
 
+.join-btn {
+    width: 100%;
+    background-color: white;
+    border-color: white;
+    border-radius: 5px;
+}
+
+#error-msg {
+    color: white;
+}
+
 h2 {
     text-align: center;
 }
@@ -64,6 +78,12 @@ h2 {
     border-radius: 10%;
 }
 
+#sent-message {
+    background-color: purple;
+    border-color: green;
+    border-radius: 15%;
+}
+
 .text {
     display: flex;
     flex-direction: row;
@@ -71,12 +91,10 @@ h2 {
     justify-content: space-between;
     padding-left: 10px;
     padding-right: 10px;
-    color: white;
 }
 
 .muted {
     font-size: 10px;
     color: white;
 }
-
 

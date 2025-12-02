@@ -6,7 +6,11 @@ app.config["SECRET_KEY"] = "JHSBFIHEFBD"
 socketio = SocketIO(app)
 
 rooms = {}
+msg_too_big = False
+msg_empty = False
 
+name = None
+code = None
 
 @app.route("/", methods=["POST", "GET"])
 def home():
@@ -64,6 +68,7 @@ def message(data):
         "name": session.get("name"),
         "message": data["data"]
     }
+    
     send(content, to=room)
     rooms[room]["messages"].append(content)
     print(f"{session.get('name')} said: {data['data']}")
