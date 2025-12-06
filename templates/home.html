@@ -11,9 +11,17 @@
     </div>
     
     <div class="join">
+        <label>Code:</label>
         <input id="text-box"type="text", placeholder="Room Code", name="code", value="{{code}}">
         <button type="submit" name="join" class="join-btn">Join Room</button>
     </div>
+
+    <div id="user-color">
+        <label>Color:</label>
+        <input type="color" id="user-color-input">
+        <input type="hidden" name="user_color" id="color-hidden">
+    </div>
+
 
     <button type="submit", name="create", class="create-button">Create a Room</button>
 

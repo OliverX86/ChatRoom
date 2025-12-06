@@ -24,6 +24,8 @@ body {
 }
 
 .create-button {
+    position: relative;
+    top: -40px;
     width: 100%;
     background-color: white;
     border-color: white;
@@ -46,6 +48,7 @@ body {
 .messages {
     overflow-y: scroll;
     flex: 1;
+    color: white;
     width: 100%;
 }
 
@@ -78,8 +81,18 @@ h2 {
     border-radius: 10%;
 }
 
-#sent-message {
-    background-color: purple;
+#user-color {
+    position: relative;
+    top: 40px;
+}
+
+#user-color-input {
+    top: 40px;
+    border-width: 2px;
+}
+
+.sent-msg {
+    background-color: var(--picked-color);
     border-color: green;
     border-radius: 15%;
 }

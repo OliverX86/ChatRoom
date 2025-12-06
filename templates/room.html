@@ -17,11 +17,11 @@
 
     const messages = document.getElementById("messages");
 
-    const createMessage = (name, msg) => {
+    const createMessage = (name, msg, color) => {
         const content = `
         <div class="text">
             <span>
-                <strong id="sent-message">${name}</strong>: ${msg}
+                <strong class="sent-msg" style="background-color: ${color};">${name}</strong>: ${msg}
             </span>
             <span class="muted">
                 ${new Date().toLocaleString()}
@@ -50,7 +50,7 @@
     };
 
     socketio.on("message", (data) => {
-        createMessage(data.name, data.message);
+        createMessage(data.name, data.message, data.color);
     });
 
     const sendMessage = () => {
@@ -72,7 +72,8 @@ document.addEventListener('keydown', function(event) {
     <script type="text/javascript">
     createMessage(
         {{ msg.name | tojson }},
-        {{ msg.message | tojson }}
+        {{ msg.message | tojson }},
+        {{ msg.color | tojson }}
     );
     </script>
 {% endfor %}

@@ -11,6 +11,7 @@ msg_empty = False
 
 name = None
 code = None
+user_color = None
 
 @app.route("/", methods=["POST", "GET"])
 def home():
@@ -21,6 +22,7 @@ def home():
         code = request.form.get("code")
         join = request.form.get("join", False)
         create = request.form.get("create", False)
+        user_color = request.form.get("user_color")
 
         if not name:
             print(code)
@@ -46,6 +48,7 @@ def home():
         
         session["room"] = room
         session["name"] = name 
+        session["user_color"] = user_color
         print(code)
         return redirect(url_for("room"))
 
@@ -57,7 +60,7 @@ def room():
     if room is None or session.get("name") is None or room not in rooms:
         return redirect(url_for("home"))
 
-    return render_template("room.html", code=room, chat_messages=rooms[room]["messages"])
+    return render_template("room.html", code=room, color=session.get("user_color"), chat_messages=rooms[room]["messages"])
 
 @socketio.on("message")
 def message(data):
@@ -66,7 +69,8 @@ def message(data):
         return
     content = {
         "name": session.get("name"),
-        "message": data["data"]
+        "message": data["data"],
+        "color": session.get("user_color")
     }
     
     send(content, to=room)
@@ -86,7 +90,7 @@ def connect(auth):
         return
 
     join_room(room)
-    send({"name": name, "message": "has entered room"}, to=room)
+    send({"name": name, "message": "has entered room"}, to=room, user_color=user_color)
     rooms[room]["members"] += 1
     print(f"{name} joied room {room}")
 
